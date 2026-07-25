@@ -1,12 +1,11 @@
-
 1
 
 Automatic Zoom
-Arjun PandeyBangalore,Karnataka
-Ó +91-9304188720 R arjunpandey.lpu@gmail.com ° arjun-pandey01  Git W leetcode W HackerRank(5*)
+Arjun Pandey
+Ó +91-9304188720 R arjunpandey.lpu@gmail.com ° arjun-pandey01 ‡ Git W leetcode W HackerRank(5*)
 WORK EXPERIENCE
 Software Engineer II June 2025 – Present
-Morgan Stanley (via Netconnect Global) Bangalore, India
+Morgan Stanley (via Netconnect Global) India
 •Engineered and scaled cloud-native backend services for derivatives clearing and post-trade processing platforms using
 Java 21, Spring Boot, and distributed messaging, supporting high-volume, low-latency financial workflows.
 •Designed and optimized asynchronous, event-driven processing pipelines leveraging Kafka, JMS, and database-backed
@@ -27,7 +26,7 @@ infrastructure-as-code and enterprise release governance standards.
 •Collaborated with platform, QA, and operations teams to design resilient services with fault-tolerant messaging, retry
 handling, and graceful degradation suitable for mission-critical financial systems.
 Software Engineer Oct 2022 – May 2025
-Yield Engineering Systems Bangalore, India
+Yield Engineering Systems India
 •Built a full-scale digital twin simulating real semiconductor hardware behavior including wafer handling, load ports,
 and robotic arms, improving system validation and testing efficiency by 50%.
 •Developed robotic integration and control services for Kawasaki robots and UR10, enabling automated wafer transfer

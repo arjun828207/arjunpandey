@@ -1,6 +1,6 @@
 # Arjun Pandey
 
-Bangalore, Karnataka · +91-9304188720 · arjunpandey.lpu@gmail.com
+India · +91-9304188720 · arjunpandey.lpu@gmail.com
 
 ---
 
@@ -13,7 +13,7 @@ Experienced backend engineer building scalable, low-latency cloud-native systems
 ## Work Experience
 
 ### Software Engineer II — Morgan Stanley (via Netconnect Global)
-June 2025 – Present · Bangalore, India
+June 2025 – Present · India
 
 - Engineered and scaled cloud-native backend services for derivatives clearing and post-trade processing platforms using Java 21 and Spring Boot.
 - Designed and optimized asynchronous, event-driven processing pipelines leveraging Kafka, JMS, and database-backed coordination to reliably process large-scale trade lifecycle events.
@@ -24,7 +24,7 @@ June 2025 – Present · Bangalore, India
 - Instrumented observability with centralized logging, metrics, and distributed tracing; managed schema evolution with Liquibase.
 
 ### Software Engineer — Yield Engineering Systems
-Oct 2022 – May 2025 · Bangalore, India
+Oct 2022 – May 2025 · India
 
 - Built a full-scale digital twin simulating semiconductor hardware and robotic workflows, improving validation efficiency by 50%.
 - Developed robotic integration and control services for Kawasaki and UR10 robots to automate wafer transfer workflows.
