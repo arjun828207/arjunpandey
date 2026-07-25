@@ -1,0 +1,16 @@
+# Configuration & Secret keys
+config.js
+secrets.js
+.env
+.env.local
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# OS & Temp files
+.DS_Store
+Thumbs.db
+*.log
+Gemini_Generated_Image*.png
+
