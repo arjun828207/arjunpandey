@@ -970,6 +970,9 @@ function showToast(message) {
    ========================================================================== */
 function initNavigation() {
   const nav = document.querySelector('.navbar');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const navLinks = document.getElementById('nav-links');
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       nav.classList.add('scrolled');
@@ -977,6 +980,23 @@ function initNavigation() {
       nav.classList.remove('scrolled');
     }
   });
+
+  // Mobile menu toggle
+  if (mobileBtn && navLinks) {
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+      const isOpen = navLinks.classList.contains('mobile-active');
+      mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-active');
+        mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+  }
 
   // Demo tabs switcher
   const tabBtns = document.querySelectorAll('.demo-tab-btn');

@@ -23,7 +23,7 @@
         <span>Arjun<span class="gradient-text">.dev</span></span>
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#architecture" class="nav-link">Architecture</a></li>
@@ -32,14 +32,17 @@
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
-      <div style="display:flex; align-items:center; gap:1rem;">
+      <div class="nav-actions">
         <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
           <i class="fas fa-moon"></i>
         </button>
         <div class="status-badge">
           <span class="status-dot"></span>
-          <span>Open to Senior Engineering Roles</span>
+          <span class="status-text">Open to Senior Roles</span>
         </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -533,7 +536,7 @@
           </div>
         </div>
 
-        <div class="achievement-card" style="grid-column: span 2; border-color: rgba(16, 185, 129, 0.35); background: rgba(16, 185, 129, 0.04);">
+        <div class="achievement-card achievement-card-wide" style="border-color: rgba(16, 185, 129, 0.35); background: rgba(16, 185, 129, 0.04);">
           <div class="achieve-icon-box" style="background:rgba(16, 185, 129, 0.15); color:#10b981; border-color:rgba(16, 185, 129, 0.4);">
             <i class="fas fa-chart-line"></i>
           </div>
