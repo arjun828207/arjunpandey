@@ -475,24 +475,25 @@ function initTradeCanvas() {
     ctx.stroke();
 
     // Node 1: Ingress Gateway (Single LB Instance)
-    drawNodeBox(ctx, node1_X, nodeY, 'INGRESS GATEWAY', 'Traffic Balancer', '#3b82f6', false, '1 LB Instance');
+    drawNodeBox(ctx, node1_X, nodeY, 'INGRESS GATEWAY', 'Traffic Balancer', '#3b82f6', false, '1 LB Instance', width);
 
     // Node 2: Core Engine (Stacked Multi-Instance Cluster managed by ZooKeeper)
-    drawNodeBox(ctx, node2_X, nodeY, 'CORE ENGINE', 'Cache & Msg Format', '#8b5cf6', true, '18x Workers (ZooKeeper)');
+    drawNodeBox(ctx, node2_X, nodeY, 'CORE ENGINE', 'Cache & Msg Format', '#8b5cf6', true, '18x Workers (ZooKeeper)', width);
 
     // Node 3: Persistence Service (Stacked Multi-Instance Cluster)
-    drawNodeBox(ctx, node3_X, nodeY, 'PERSISTENCE', 'Async DB Writer', '#f59e0b', true, '3x Writers');
+    drawNodeBox(ctx, node3_X, nodeY, 'PERSISTENCE', 'Async DB Writer', '#f59e0b', true, '3x Writers', width);
 
     // Relational Database Cylinder under Persistence Service
-    drawDatabaseCylinder(ctx, node3_X, dbY, 'RELATIONAL DB', '#f59e0b');
+    drawDatabaseCylinder(ctx, node3_X, dbY, 'RELATIONAL DB', '#f59e0b', width);
 
     // Node 4: Event Publisher (Stacked Multi-Instance Cluster)
-    drawNodeBox(ctx, node4_X, nodeY, 'EVENT PUBLISHER', 'Multi-Consumer Fanout', '#10b981', true, '3x Pub Nodes');
+    drawNodeBox(ctx, node4_X, nodeY, 'EVENT PUBLISHER', 'Multi-Consumer Fanout', '#10b981', true, '3x Pub Nodes', width);
 
     // Top HUD Telemetry
     ctx.fillStyle = '#00f2fe';
-    ctx.font = '600 11px "Fira Code", monospace';
-    ctx.fillText('HIGH-THROUGHPUT PIPELINE ARCHITECTURE | 18 WORKERS (ZOOKEEPER PARTITIONED) [ACTIVE]', 15, 20);
+    ctx.font = width < 600 ? '600 8.5px "Fira Code", monospace' : '600 11px "Fira Code", monospace';
+    const hudTitle = width < 600 ? 'PIPELINE ARCHITECTURE (18 WORKERS)' : 'HIGH-THROUGHPUT PIPELINE ARCHITECTURE | 18 WORKERS (ZOOKEEPER PARTITIONED) [ACTIVE]';
+    ctx.fillText(hudTitle, 10, 18);
 
     requestAnimationFrame(renderTradeCanvas);
   }
@@ -500,27 +501,39 @@ function initTradeCanvas() {
   renderTradeCanvas();
 }
 
-function drawNodeBox(ctx, x, y, title, subtitle, color, isMultiInstance = false, badgeText = '') {
-  const w = 110, h = 44;
+function drawNodeBox(ctx, x, y, title, subtitle, color, isMultiInstance = false, badgeText = '', canvasWidth = 600) {
+  const isMobile = canvasWidth < 600;
+  const w = isMobile ? Math.max(68, Math.min(96, canvasWidth * 0.20)) : 110;
+  const h = isMobile ? 38 : 44;
+
+  const titleFontSize = isMobile ? '700 7.5px "Outfit", sans-serif' : '700 9px "Outfit", sans-serif';
+  const subFontSize = isMobile ? '500 6.5px "Fira Code", monospace' : '500 8px "Fira Code", monospace';
+  const badgeFontSize = isMobile ? '600 6px "Fira Code", monospace' : '700 7.5px "Fira Code", monospace';
+
+  const displayTitle = isMobile && title.length > 11 ? title.substring(0, 9) + '..' : title;
+  const displaySub = isMobile && subtitle.length > 14 ? subtitle.substring(0, 12) + '..' : subtitle;
+  const displayBadge = isMobile && badgeText.includes('ZooKeeper') ? '18x Workers' : badgeText;
 
   if (isMultiInstance) {
-    // Render 2 stacked background card layers offset by (-6, -6) and (-3, -3) to show 3D multi-instance cluster
+    const offset1 = isMobile ? 3 : 6;
+    const offset2 = isMobile ? 1.5 : 3;
+
     ctx.fillStyle = 'rgba(15, 23, 42, 0.5)';
     ctx.strokeStyle = color;
     ctx.lineWidth = 1;
-    ctx.fillRect(x - w / 2 - 6, y - h / 2 - 6, w, h);
-    ctx.strokeRect(x - w / 2 - 6, y - h / 2 - 6, w, h);
+    ctx.fillRect(x - w / 2 - offset1, y - h / 2 - offset1, w, h);
+    ctx.strokeRect(x - w / 2 - offset1, y - h / 2 - offset1, w, h);
 
     ctx.fillStyle = 'rgba(15, 23, 42, 0.7)';
-    ctx.fillRect(x - w / 2 - 3, y - h / 2 - 3, w, h);
-    ctx.strokeRect(x - w / 2 - 3, y - h / 2 - 3, w, h);
+    ctx.fillRect(x - w / 2 - offset2, y - h / 2 - offset2, w, h);
+    ctx.strokeRect(x - w / 2 - offset2, y - h / 2 - offset2, w, h);
   }
 
   // Front Main Node Box
   ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
   ctx.strokeStyle = color;
   ctx.lineWidth = 1.5;
-  ctx.shadowBlur = 10;
+  ctx.shadowBlur = isMobile ? 5 : 10;
   ctx.shadowColor = color;
   ctx.fillRect(x - w / 2, y - h / 2, w, h);
   ctx.strokeRect(x - w / 2, y - h / 2, w, h);
@@ -528,30 +541,35 @@ function drawNodeBox(ctx, x, y, title, subtitle, color, isMultiInstance = false,
 
   // Title
   ctx.fillStyle = '#f8fafc';
-  ctx.font = '700 9px "Outfit", sans-serif';
+  ctx.font = titleFontSize;
   ctx.textAlign = 'center';
-  ctx.fillText(title, x, y - 4);
+  ctx.fillText(displayTitle, x, y - (isMobile ? 2 : 4));
 
   // Subtitle
   ctx.fillStyle = color;
-  ctx.font = '500 8px "Fira Code", monospace';
-  ctx.fillText(subtitle, x, y + 10);
+  ctx.font = subFontSize;
+  ctx.fillText(displaySub, x, y + (isMobile ? 8 : 10));
 
   // Instance Badge pill (top right)
-  if (badgeText) {
+  if (displayBadge) {
     ctx.fillStyle = color;
-    ctx.font = '700 7.5px "Fira Code", monospace';
+    ctx.font = badgeFontSize;
     ctx.textAlign = 'right';
-    ctx.fillText(badgeText, x + w / 2 - 2, y - h / 2 - 4);
+    ctx.fillText(displayBadge, x + w / 2 - 2, y - h / 2 - (isMobile ? 2 : 4));
   }
 }
 
-function drawDatabaseCylinder(ctx, x, y, label, color) {
-  const rx = 38, ry = 8, h = 18;
+function drawDatabaseCylinder(ctx, x, y, label, color, canvasWidth = 600) {
+  const isMobile = canvasWidth < 600;
+  const rx = isMobile ? 26 : 38;
+  const ry = isMobile ? 6 : 8;
+  const h = isMobile ? 14 : 18;
+  const labelText = isMobile ? 'DB' : label;
+
   ctx.fillStyle = 'rgba(245, 158, 11, 0.18)';
   ctx.strokeStyle = color;
   ctx.lineWidth = 1.5;
-  ctx.shadowBlur = 8;
+  ctx.shadowBlur = isMobile ? 4 : 8;
   ctx.shadowColor = color;
 
   // DB Body & Top Ellipse
@@ -565,9 +583,9 @@ function drawDatabaseCylinder(ctx, x, y, label, color) {
   ctx.shadowBlur = 0;
 
   ctx.fillStyle = '#f8fafc';
-  ctx.font = '600 8px "Fira Code", monospace';
+  ctx.font = isMobile ? '600 7px "Fira Code", monospace' : '600 8px "Fira Code", monospace';
   ctx.textAlign = 'center';
-  ctx.fillText(label, x, y + 3);
+  ctx.fillText(labelText, x, y + 3);
 }
 
 /* ==========================================================================

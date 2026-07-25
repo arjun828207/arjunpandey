@@ -1492,6 +1492,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 100%;
     left: 0;
     right: 0;
+    z-index: 99999;
     background: rgba(7, 10, 18, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
@@ -1523,7 +1524,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
   .hero-subtitle {
@@ -1535,7 +1536,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .demo-container {
-    padding: 1.5rem;
+    padding: 1.25rem 0.85rem;
     margin-top: 1.5rem;
   }
 
@@ -1547,6 +1548,8 @@ h1, h2, h3, h4, h5, h6 {
   .demo-tab-btn {
     width: 100%;
     justify-content: flex-start;
+    font-size: 0.88rem;
+    padding: 0.65rem 1rem;
   }
 
   .contact-grid {
@@ -1571,7 +1574,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-title {
-    font-size: 2.35rem;
+    font-size: 2.2rem;
   }
 
   .hero-badge-group {
@@ -1605,12 +1608,31 @@ h1, h2, h3, h4, h5, h6 {
   .sim-controls {
     flex-direction: column;
     align-items: stretch;
+    padding: 0.85rem;
   }
 
   .sim-stat-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .sim-stat-item {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .sim-stat-label {
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .sim-stat-value {
+    font-size: 1.05rem;
+    white-space: nowrap;
   }
 
   .sim-pipeline-visualizer {
