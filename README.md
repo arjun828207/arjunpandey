@@ -1,17 +1,14 @@
 # Portfolio — Arjun Pandey
 
-Files created:
+Welcome to my personal software engineering portfolio website!
 
-- `index.html` — portfolio website (open in browser)
-- `styles.css` — styling for the site
-- `resume.md` — polished resume (downloadable)
+🌐 **Live Website**: [https://arjun828207.github.io/arjunpandey/](https://arjun828207.github.io/arjunpandey/)
 
-How to preview locally:
+---
 
-1. Open `index.html` in a browser (double-click or right-click → Open with).
+### Tech Stack & Features
+- **Frontend**: HTML5, Vanilla CSS, Modern JavaScript (ES6+)
+- **Interactive Visualizers**: Distributed Systems Trade Ingestion Engine & SECS/GEM Semiconductor Digital Twin
+- **Styling**: Obsidian Dark Mode & Clean Light Mode theme toggle, glassmorphism, responsive grid
+- **Resume Data**: Morgan Stanley SDE II & Yield Engineering Systems production experience
 
-Optional next steps:
-
-- Convert `resume.md` to a PDF using an editor (VS Code Markdown preview → Print to PDF) or `pandoc`.
-- Publish the `index.html` and assets to GitHub Pages for a public portfolio.
-- I can also generate a LinkedIn-ready summary, tailor application-specific resumes, or create a PDF resume — tell me which you prefer.
